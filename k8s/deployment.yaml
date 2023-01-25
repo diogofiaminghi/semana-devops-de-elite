@@ -4,7 +4,7 @@ metadata:
   name: postgre
 spec:
   selector:
-    mathLabels:
+    matchLabels:
       app: postgre
   template:
     metadata:
@@ -46,7 +46,7 @@ metadata:
 spec:
   replicas: 10
   selector:
-    mathLabels:
+    matchLabels:
       app: web
   template:
     metadata:
