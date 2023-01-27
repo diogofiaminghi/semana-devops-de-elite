@@ -25,12 +25,13 @@ pipeline {
 		stage('Push') {
 
 			steps {
-				//sh 'docker push diogofiaminghi/kube-news:latest'
-                //dockerapp.push('latest')
-                dockerapp.push("${env.BUILD_ID}")
-			}
-		}
-	}
+				script {
+                    //docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+			    }
+		    }
+	    }
 
     post {
         always {
