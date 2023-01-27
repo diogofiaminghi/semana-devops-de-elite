@@ -26,7 +26,7 @@ pipeline {
 
 			steps {
 				//sh 'docker push diogofiaminghi/kube-news:latest'
-                dockerapp.push('latest')
+                //dockerapp.push('latest')
                 dockerapp.push("${env.BUILD_ID}")
 			}
 		}
