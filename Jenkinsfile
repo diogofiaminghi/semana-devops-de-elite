@@ -26,7 +26,7 @@ pipeline {
 
 			steps {
 				sh 'docker push diogofiaminghi/kube-news:latest'
-                sh "docker push diogofiaminghi/kube-news:${env.BUILD_ID}"
+                sh 'docker push diogofiaminghi/kube-news:${env.BUILD_ID}'
 			}
 		}
 	}    
