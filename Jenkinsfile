@@ -10,7 +10,7 @@ pipeline {
         stage ('Build Docker Image'){
             steps{
                 script {
-                    dockerapp = docker.build("diogofiaminghi/kube-news:latest", '-f ./src/Dockerfile ./src')
+                    dockerapp = docker.build("diogofiaminghi/kube-news:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')
                 }
             }
         }
@@ -25,7 +25,12 @@ pipeline {
 		stage('Push') {
 
 			steps {
-				sh 'docker push diogofiaminghi/kube-news:latest'
+				//sh 'docker push diogofiaminghi/kube-news:latest'
+
+                script {
+                    dockerapp.push('latest')
+                    dockerapp.push("${env.BUILD_ID}")
+                }
 			}
 	    }
     }
