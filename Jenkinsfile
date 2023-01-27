@@ -26,10 +26,15 @@ pipeline {
 
 			steps {
 				sh 'docker push diogofiaminghi/kube-news:latest'
-                sh 'docker push diogofiaminghi/kube-news:${env.BUILD_ID}'
 			}
 		}
-	}    
+	}
+
+    post {
+        always {
+            sh 'docker logout'
+        }
+    }    
 }    
 
 //        stage('Push Docker Image'){
